@@ -1,3 +1,4 @@
+// This code was generated using ChatGPT and modified by the coder
 #define _CRT_SECURE_NO_WARNINGS
 #ifndef H_BINARYEXPRESSIONTREE
 #define H_BINARYEXPRESSIONTREE

@@ -1,3 +1,4 @@
+// This code was generated using ChatGPT and modified by the coder
 #define _CRT_SECURE_NO_WARNINGS
 #include "binaryExpressionTree.h"
 #include <stack>

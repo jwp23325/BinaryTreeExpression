@@ -1,4 +1,3 @@
-//Header File Binary Search Tree
 #define _CRT_SECURE_NO_WARNINGS
 #ifndef H_binaryTree
 #define H_binaryTree
