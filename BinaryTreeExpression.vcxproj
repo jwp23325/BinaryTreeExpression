@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="RpnData.txt" />
+    <Text Include="RpnOutput.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -41,5 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="RpnData.txt" />
+    <Text Include="RpnOutput.txt" />
   </ItemGroup>
 </Project>
