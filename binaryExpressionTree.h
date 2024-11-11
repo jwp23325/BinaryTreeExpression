@@ -8,7 +8,8 @@
 
 class binaryExpressionTree : public binaryTreeType<std::string> {
 public:
-    binaryExpressionTree();  // Constructor
+    // Constructor
+    binaryExpressionTree();  
 
     // Build the expression tree from a postfix expression
     void buildExpressionTree(const std::string& postfix);
