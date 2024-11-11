@@ -12,18 +12,32 @@ using namespace std;
 class postFixCalc
 {
 public:
+	// Precondition - postfix expression string is provided
+	// Postcondition - string is stored in class
 	void setPostFixExp(string);
 
+	// Postconition - Returns the expression string
 	string getPostFixExp();
 
+	// Precondition - Assumes the expression has been stored in the class
+	// Postcondition - THe expression has been evaluated
+	// and the result is stored on the stack
 	void evaluate();
 
+	// Precondition - The operator character is provided
+	// Postcondition - The top two numbers on the stck are evaluated
+	// and the result is stored back on the stack, exceptions are thrown
+	// if the specified error conditions are detected
 	void evaluateOpr(char);
 	/*
 		throw (TooFewOperandsException,
 			DivisionByZeroException,
 			IllegalOperatorException); */
 
+	// Precondition - The expresion has been evaluated and 
+	// the result is the only item in the stack
+	// Postcondition - the result is returned, exceptions are thrown if the 
+	// specified error conditions are detected
 	double getResult(); //throw (TooManyOperandsException, ErrorinExpressionException);
 
 
