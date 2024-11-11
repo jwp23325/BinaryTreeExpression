@@ -31,7 +31,7 @@ int main()
 
     outputFile << fixed << showpoint;
     outputFile << setprecision(2);
-    outputFile << "HEY" << endl;
+    
     
     // Create an object of binaryExpressionTree
     binaryExpressionTree exprTree;
