@@ -19,12 +19,20 @@ int main()
     if (!inputFile) {
         cout << "Cannot open the input file. "
             << "Program terminates!" << endl;
+        return 1;
     }
 
     outputFile.open("RpnOutput.txt");
+    if (!outputFile) {
+        cout << "Cannot open the output file. "
+            << "Program terminates!" << endl;
+        return 1;
+    }
+
     outputFile << fixed << showpoint;
     outputFile << setprecision(2);
-
+    outputFile << "HEY" << endl;
+    
     // Create an object of binaryExpressionTree
     binaryExpressionTree exprTree;
     string expr;
