@@ -3,8 +3,8 @@
 #include <iomanip>
 #include <fstream>
 #include "PostfixCalc.h"
-#include "binaryExpressionTree.h"  // Make sure to include your expression tree header
-#include "binaryTree.h"  // Include binaryTree.h since it's the base class
+#include "binaryExpressionTree.h"  
+#include "binaryTree.h"  
 
 
 using namespace std;
@@ -13,8 +13,9 @@ int main()
 {
     ifstream inputFile;
     ofstream outputFile;
-    binaryExpressionTree expTree; // Create an object of binaryExpressionTree to evaluate
+    binaryExpressionTree expTree;                                                   // Create an object of binaryExpressionTree to evaluate
 
+    // Open the input file containing potfix expressions
     inputFile.open("RpnData.txt");
     if (!inputFile) {
         cout << "Cannot open the input file. "
@@ -22,6 +23,7 @@ int main()
         return 1;
     }
 
+    // Open the output file for writing evaluation results
     outputFile.open("RpnOutput.txt");
     if (!outputFile) {
         cout << "Cannot open the output file. "
@@ -30,28 +32,23 @@ int main()
     }
 
     outputFile << fixed << showpoint;
-    outputFile << setprecision(2);
-    
-    // Create an object of binaryExpressionTree
-    binaryExpressionTree exprTree;
-    string expr;
-
-    postFixCalc calc;
-    double result;
-    getline(inputFile, expr);
-
+    outputFile << setprecision(2);                                                  // Set output formatting to 2 decimal places
+ 
+    binaryExpressionTree exprTree;                                                  // Object to manage the currect expression tree
+    string expr;                                                                    // Stores each postfix expresion read from file
+    postFixCalc calc;                                                               // Calculator object for additional functionality, if needed
+    double result;                                                                  // Stores the evaluation result of the current expression
+   
+    // Read each line (expression) from the input file
     while (getline(inputFile, expr)) {
         try {
-            // Build and evaluate the expression tree
-            exprTree.buildExpressionTree(expr);
-            double result = exprTree.evaluateExpressionTree();
-
-            // Output the result to the file
-            outputFile << "Expression: " << expr << " = " << result << endl;
-
-            // Clear the current expression tree
-            exprTree.destroyTree();
+            exprTree.buildExpressionTree(expr);                                     // Build the expression tree from the postfix expresion string
+            double result = exprTree.evaluateExpressionTree();                      // Evaluate the expresion tree from the postfix expression string
+            outputFile << "Expression: " << expr << " = " << result << endl;        // Write the result to the output file
+            exprTree.destroyTree();                                                 // Clear the current tree to prepare for the next expression
         }
+
+        // Catch and handle specific exceptions related to postix calculations
         catch (const runtime_error& e) {
             outputFile << "Error evaluating expression: " << expr << endl;
             cerr << e.what() << endl;

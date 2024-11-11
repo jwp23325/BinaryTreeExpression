@@ -71,7 +71,7 @@ void binaryExpressionTree::buildExpressionTree(const std::string& postfix) {
 
     delete[] expression;                                                                        // Clean up dynamically allocated memory for expression
 }
-}
+
 
 // Evaluate the expression tree recursively
 double binaryExpressionTree::evaluateExpressionTree() {

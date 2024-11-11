@@ -34,16 +34,16 @@ public:
 			DivisionByZeroException,
 			IllegalOperatorException); */
 
-	// Precondition - The expresion has been evaluated and 
-	// the result is the only item in the stack
-	// Postcondition - the result is returned, exceptions are thrown if the 
-	// specified error conditions are detected
+			// Precondition - The expresion has been evaluated and 
+			// the result is the only item in the stack
+			// Postcondition - the result is returned, exceptions are thrown if the 
+			// specified error conditions are detected
 	double getResult(); //throw (TooManyOperandsException, ErrorinExpressionException);
 
 
 	class TooFewOperandsException {
 	public:
-		TooFewOperandsException() { message = "Not enough operndds ";  }
+		TooFewOperandsException() { message = "Not enough operndds "; }
 		string what() { return message; }
 	private:
 		string message;
@@ -82,11 +82,10 @@ public:
 	private:
 		string message;
 	};
-	
+
 private:
 	string pFexp;
 	stack <double> resultStack;
 	char* expression;
-
 };
 #endif

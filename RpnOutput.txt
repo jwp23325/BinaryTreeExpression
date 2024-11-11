@@ -1,3 +1,4 @@
+Expression: 35 27 + 3 * = 186.00
 Expression: 23 30 15 * / = 0.05
 Expression: 34 24 12 7 / * + 23 - = 52.14
 Expression: 3 7 + 14 * = 140.00
