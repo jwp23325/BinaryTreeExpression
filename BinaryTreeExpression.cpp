@@ -1,20 +1,80 @@
-// BinaryTreeExpression.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <iomanip>
+#include <fstream>
+#include "PostfixCalc.h"
+#include "binaryExpressionTree.h"  // Make sure to include your expression tree header
+#include "binaryTree.h"  // Include binaryTree.h since it's the base class
+
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    ifstream inputFile;
+    ofstream outputFile;
+    binaryExpressionTree expTree; // Create an object of binaryExpressionTree to evaluate
+
+    inputFile.open("RpnData.txt");
+    if (!inputFile) {
+        cout << "Cannot open the input file. "
+            << "Program terminates!" << endl;
+    }
+
+    outputFile.open("RpnOutput.txt");
+    outputFile << fixed << showpoint;
+    outputFile << setprecision(2);
+
+    // Create an object of binaryExpressionTree
+    binaryExpressionTree exprTree;
+    string expr;
+
+    postFixCalc calc;
+    double result;
+    getline(inputFile, expr);
+
+    while (getline(inputFile, expr)) {
+        try {
+            // Build and evaluate the expression tree
+            exprTree.buildExpressionTree(expr);
+            double result = exprTree.evaluateExpressionTree();
+
+            // Output the result to the file
+            outputFile << "Expression: " << expr << " = " << result << endl;
+
+            // Clear the current expression tree
+            exprTree.destroyTree();
+        }
+        catch (const runtime_error& e) {
+            outputFile << "Error evaluating expression: " << expr << endl;
+            cerr << e.what() << endl;
+        }
+        catch (postFixCalc::TooFewOperandsException e) {
+            outputFile << "Error evaluating expression: Too few operands." << endl;
+        }
+        catch (postFixCalc::DivisionByZeroException e) {
+            outputFile << "Error evaluating expression: Division by zero." << endl;
+        }
+        catch (postFixCalc::IllegalOperatorException e) {
+            outputFile << "Error evaluating expression: Illegal operator." << endl;
+        }
+        catch (postFixCalc::TooManyOperandsException e) {
+            outputFile << "Error evaluating expression: Too many operands." << endl;
+        }
+        catch (postFixCalc::ErrorinExpressionException e) {
+            outputFile << "Error evaluating expression: Invalid expression." << endl;
+        }
+        catch (const exception e) {
+            outputFile << "Unexpected error: " << e.what() << endl;
+        }
+    }
+
+    // Close the input and output files
+    inputFile.close();
+    outputFile.close();
+
+    cout << "Evaluation complete. Results written to Result.txt" << endl;
+    return 0;  // Successful execution
 }
+    
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

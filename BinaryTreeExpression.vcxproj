@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="binaryExpressionTree.cpp" />
     <ClCompile Include="BinaryTreeExpression.cpp" />
+    <ClCompile Include="PostfixCalc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="binaryExpressionTree.h" />
+    <ClInclude Include="binaryTree.h" />
+    <ClInclude Include="PostfixCalc.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="RpnData.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
